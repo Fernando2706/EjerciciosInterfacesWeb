@@ -4,7 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Fernando</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/EjerciciosInterfacesWeb/Ejercicio 1/css/style.css">
+    <script>
+
+        function addValue(a){
+            document.getElementById("valor").innerHTML+=a;
+        }
+        function solve(){
+            document.getElementById("valor").innerHTML= eval(document.getElementById("valor").innerHTML)
+        }
+        function clearC(){
+            document.getElementById("valor").innerHTML=0;
+        }
+        function move(a){
+            document.getElementById(a).style.position="relative";
+            document.getElementById(a).style.top="0px";
+            var pos=document.getElementById(a).style.top;
+            var position= parseInt(pos.replace("px",""));
+            console.log(position);
+            document.getElementById(a).style.top=position+20+"px";
+        }
+    </script>
 </head>
 <body>
     <div class="contenedor">
@@ -16,41 +36,41 @@
                 <div class="texto">Calculadora</div>
             </div>
             <div class="caja_valor">
-                <input   type="text" name="valor" id="valor" maxlength="18" value="0" readonly="true" class="display" >
+                <div class="display" id="valor"></div>
             </div>
             <div class="fila">
-                <input type="button" value="MC"class="boton" >
-                <input type="button" value="M+"class="boton">
-                <input type="button" value="M-"class="boton">
-                <input type="button" value="MR"class="boton">
+                <div class="boton" onclick="addValue('MC')">MC</div>
+                <input type="button" value="M+"class="boton" onclick="addValue('M+')">
+                <input type="button" value="M-"class="boton" onclick="addValue('M-')">
+                <input type="button" value="MR"class="boton"onclick="addValue('MR')">
             </div>
             <div class="fila">
-                <input type="button" value="C"class="boton">
+                <input type="button" value="C"class="boton" onclick="clearC()">
                 <input type="button" value="±"class="boton">
-                <input type="button" value="/"class="boton">
-                <input type="button" value="*"class="boton">
+                <input type="button" value="/"class="boton"onclick="addValue('/')">
+                <input type="button" value="*"class="boton"onclick="addValue('*')">
             </div>
             <div class="fila">
-                <input type="button" value="7"class="boton">
-                <input type="button" value="8"class="boton">
-                <input type="button" value="9"class="boton">
-                <input type="button" value="-"class="boton">
+                <input type="button" value="7"class="boton"onclick="addValue('7')">
+                <input type="button" value="8"class="boton"onclick="addValue('8')">
+                <input type="button" value="9"class="boton"onclick="addValue('9')">
+                <input type="button" value="-"class="boton"onclick="addValue('-')">
             </div>
             <div class="fila">
-                <input type="button" value="4"class="boton" >
-                <input type="button" value="5"class="boton" >
-                <input type="button" value="6"class="boton">
-                <input type="button" value="+" class="boton">
+                <input type="button" value="4"class="boton" onclick="addValue('4')">
+                <input type="button" value="5"class="boton" onclick="addValue('5')">
+                <input type="button" value="6"class="boton" onclick="addValue('6')">
+                <input type="button" value="+" class="boton" onclick="addValue('+')">
             </div>
             <div class="fila">
-                <input type="button" value="1" class="boton">
-                <input type="button" value="2" class="boton">
-                <input type="button" value="3" class="boton">
-                <input type="button" value="=" class="boton">
+                <input type="button" value="1" class="boton" id="1" onclick="addValue('1')">
+                <input type="button" value="2" class="boton" id="2" onclick="addValue('2')">
+                <input type="button" value="3" class="boton" id="3" onclick="addValue('3')">
+                <input type="button" value="=" class="boton" id="=" onclick="solve()">
             </div>
             <div class="fila">
-                <input type="button" value="0" class="boton zero">
-                <input type="button" value="," class="boton">
+                <input type="button" value="0" class="boton zero" id="0" onclick="addValue('0')">
+                <input type="button" value="," class="boton" id="," onclick="move(',')">
     
             </div>
         </div>

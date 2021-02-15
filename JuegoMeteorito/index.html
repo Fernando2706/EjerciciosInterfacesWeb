@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Meteoritos</title>
+    <script>
+        var playing=true;
+        var velocidadNave=20;
+        window.addEventListener("keydown",(k)=>{
+            if(k.key==="ArrowLeft"){
+                
+                var pos=document.getElementById("nave").style.left;
+                var position=parseInt(pos.replace("px",""));
+                if(position<0){
+
+                }else{
+                    document.getElementById("nave").style.left=position-velocidadNave+"px";
+                }
+                
+            }
+            if(k.key==="ArrowRight"){
+                var pos=document.getElementById("nave").style.left;
+                var position=parseInt(pos.replace("px",""));
+                if(position>window.screen.width){
+
+                }else{
+                    document.getElementById("nave").style.left=position+velocidadNave+"px";
+                }
+            }
+        });
+        var speed=[1,8,5,3,2,11,13,6,4,5,7]
+        window.onload=inicio;
+        function inicio(){
+            var Meteoritos=[...document.getElementsByClassName("meteorito")];
+            Meteoritos.forEach((element)=>{
+                var randomX=Math.floor(Math.random() * 90);
+                console.log(element.id);
+                document.getElementById(element.id).style.left=randomX+"%";
+                document.getElementById(element.id).style.top="-10px"
+            });
+            document.getElementById("nave").style.top="90%"
+            document.getElementById("nave").style.left="250px"
+            move();
+        }
+        function move(){
+            var Meteoritos=[...document.getElementsByClassName("meteorito")];
+            Meteoritos.forEach((element)=>{
+                
+                var positionY=document.getElementById(element.id).style.top;
+                var pos=parseInt(positionY.replace("px",""));
+                if(pos>window.screen.height-150){
+                    var randomX=Math.floor(Math.random() * 100);
+                    document.getElementById(element.id).style.left=randomX+"%";
+                    pos=0;
+                }
+                document.getElementById(element.id).style.top=pos+speed[parseInt(element.id)]+"px";
+                
+
+            });
+
+
+            if(playing){
+                setTimeout(move,20);
+            }
+
+           
+        }
+
+        
+    </script>
+</head>
+<body>
+    <div class="meteorito" id="0"></div>
+    <div class="meteorito" id="1"></div>
+    <div class="meteorito" id="2"></div>
+    <div class="meteorito" id="3"></div>
+    <div class="meteorito" id="4"></div>
+    <div class="meteorito" id="5"></div>
+    <div class="meteorito" id="6"></div>
+    <div class="meteorito" id="7"></div>
+    <div class="meteorito" id="8"></div>
+    <div class="meteorito" id="9"></div>
+    <div class="meteorito" id="10"></div>
+    <div class="nave" id="nave"></div>
+</body>
+</html>

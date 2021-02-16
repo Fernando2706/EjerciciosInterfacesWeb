@@ -14,3 +14,41 @@ body{
     background-image: url("../nave.png");
     position: absolute;
 }
+.play{
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    visibility: hidden;
+    transform: translate(-50%,-50%);
+}
+.score{
+    border: 5px;
+    font-size: 30px;
+    justify-self: end;
+    color:white;
+    visibility: visible;
+}
+.disparo{
+    position: absolute;
+    width: 5px;
+    height: 20px;
+    color: red;
+    background-color: red;
+    border-radius: 10px;
+}
+.nave-enemiga{
+    width: 50px;
+    height: 54px;
+    background-image: url("../nave.png");
+    position: absolute;
+    -moz-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+    -ms-filter: "FlipV";
+    filter: FlipV;
+}

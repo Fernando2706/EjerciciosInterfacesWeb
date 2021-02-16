@@ -8,8 +8,11 @@
     <script>
         var playing=true;
         var velocidadNave=20;
+        var numeroDisparo=0;
+
         window.addEventListener("keydown",(k)=>{
-            if(k.key==="1"){
+            if(playing){
+                if(k.key==="1"){
                 if(playing){
                     playing=false
                     console.log("no");
@@ -62,6 +65,7 @@
                 disparar();
                 document.getElementById("meteorito-6").style.top="100px";
             }
+            }
         });
         var speed=[1,8,5,3,2,11,13,6,4,5,7]
         window.onload=inicio;
@@ -95,11 +99,7 @@
             k++;1
             nave.style.top="10px";
             nave.style.left=randomX+"px";
-            document.body.append(nave);
-
-
-            setTimeout(crearNave(),10000);
-            
+            document.body.append(nave);            
         }
 
         function move(){
@@ -134,7 +134,7 @@
                         if(hit(element1,element)){  
                             document.body.removeChild(element);
                             document.getElementById(element1.id).style.backgroundImage="url(explosion.gif)";
-                            setTimeout(eliminarNave(element1),2000);
+                            //setTimeout(eliminarNave(element1),200);
                             var score=document.getElementById("score").innerHTML;
                             var NScore=parseInt(score);
                             NScore=NScore+100;
@@ -155,14 +155,36 @@
                     document.getElementById(element.id).style.left=randomX+"%";
                     pos=0;
                 }
+
                 document.getElementById(element.id).style.top=pos+speed[aux]+"px";
                 aux++;
+                if(numeroDisparo%30==0){
+                    disparoEnemigo(element);
+                }
             });
+            if(numeroDisparo%100==0){
+                //crearNave();
+            }
+            var disparosEnemigos=[...document.getElementsByClassName("disparo-enemigo")];
+            if(disparosEnemigos.length>0){
+                disparosEnemigos.forEach(element => {
+                    var positionY=element.style.top;
+                    var pos=parseInt(positionY.replace("px",""));
+                    if(pos>window.screen.height-200){
+                        document.body.removeChild(element);
+                    }else{
+                        element.style.top=pos+velocidadNave+"px";
+                        isCollapsed(document.getElementById("nave"),document.getElementById(element.id));
+                    }
+
+                });
+            }
             if(playing){
                 var score=document.getElementById("score").innerHTML;
                 var NScore=parseInt(score);
                 NScore++;
                 document.getElementById("score").innerHTML=NScore;
+                numeroDisparo++;
                 setTimeout(move,20);
             }
             
@@ -173,13 +195,25 @@
             var y = document.getElementById("nave").style.top
             var disparo=document.createElement("div");
 
-            console.log(disparo.id);
-
             disparo.className="disparo";
             disparo.style.top=y;
             disparo.style.left=x;
             document.body.append(disparo);
 
+        }
+
+        var dis=0;
+        function disparoEnemigo(nave) {
+            var x = nave.style.left;
+            var y = nave.style.top;
+            var disparo=document.createElement("div");
+            disparo.id="disparo-"+dis.toString();
+            dis++;
+
+            disparo.className="disparo-enemigo"
+            disparo.style.top=y;
+            disparo.style.left=x;
+            document.body.append(disparo);
         }
 
         function eliminarNave(nave) {

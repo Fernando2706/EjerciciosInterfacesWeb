@@ -11,7 +11,7 @@ body{
 .nave{
     width: 50px;
     height: 54px;
-    background-image: url("../nave.png");
+    background-image: url("../image.png");
     position: absolute;
 }
 .play{
@@ -42,8 +42,8 @@ body{
 }
 .nave-enemiga{
     width: 50px;
-    height: 54px;
     background-image: url("../nave.png");
+    height: 54px;
     position: absolute;
     -moz-transform: scaleY(-1);
     -o-transform: scaleY(-1);
@@ -51,4 +51,12 @@ body{
     transform: scaleY(-1);
     -ms-filter: "FlipV";
     filter: FlipV;
+}
+.disparo-enemigo{
+    position: absolute;
+    width: 5px;
+    height: 20px;
+    color: green;
+    background-color: green;
+    border-radius: 10px;
 }

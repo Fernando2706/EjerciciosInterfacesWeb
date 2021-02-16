@@ -67,7 +67,7 @@
             }
             }
         });
-        var speed=[1,8,5,3,2,11,13,6,4,5,7]
+        var speed=[1,8,5,3,2,11,13,6,4,5,7,3,5,7,2,1,4,5,6,2,1,3,5,6,7,8,9,5,3,2,1,1,2,4,5,6,7,8,6,4,2,1,2,5,6,7,8,9,7,5,4,3,21,1,3,4,5,6,2,5,6,7]
         window.onload=inicio;
         function inicio(){
             var Meteoritos=[...document.getElementsByClassName("meteorito")];
@@ -90,7 +90,7 @@
 
         }
 
-        var k=0;
+        var k=6;
         function crearNave() {
             var randomX=Math.floor(Math.random() * 80);
             var nave=document.createElement("div");
@@ -134,7 +134,9 @@
                         if(hit(element1,element)){  
                             document.body.removeChild(element);
                             document.getElementById(element1.id).style.backgroundImage="url(explosion.gif)";
-                            //setTimeout(eliminarNave(element1),200);
+                            setTimeout(()=>{
+                                document.body.removeChild(element1);
+                            },500);
                             var score=document.getElementById("score").innerHTML;
                             var NScore=parseInt(score);
                             NScore=NScore+100;
@@ -155,7 +157,8 @@
                     document.getElementById(element.id).style.left=randomX+"%";
                     pos=0;
                 }
-
+                if(aux==speed.length)
+                    aux=0;
                 document.getElementById(element.id).style.top=pos+speed[aux]+"px";
                 aux++;
                 if(numeroDisparo%30==0){
@@ -163,7 +166,7 @@
                 }
             });
             if(numeroDisparo%100==0){
-                //crearNave();
+                crearNave();
             }
             var disparosEnemigos=[...document.getElementsByClassName("disparo-enemigo")];
             if(disparosEnemigos.length>0){
@@ -185,7 +188,7 @@
                 NScore++;
                 document.getElementById("score").innerHTML=NScore;
                 numeroDisparo++;
-                setTimeout(move,20);
+                setTimeout(move,30);
             }
             
         }
@@ -217,7 +220,11 @@
         }
 
         function eliminarNave(nave) {
-            document.body.removeChild(nave);
+            try {
+                document.body.removeChild(nave);
+            } catch (error) {
+                
+            }
             
         }
 

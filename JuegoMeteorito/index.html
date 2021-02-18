@@ -64,6 +64,8 @@
             if(k.code==="Space"){
                 disparar();
                 document.getElementById("meteorito-6").style.top="100px";
+                var audio =  new Audio("disparo.mp3");
+                audio.play();
             }
             }
         });
@@ -221,6 +223,8 @@
 
         function eliminarNave(nave) {
             try {
+                var audio= new Audio("explosion.mp3");
+                audio.play();
                 document.body.removeChild(nave);
             } catch (error) {
                 
@@ -238,6 +242,8 @@
                 playing=false;
                 document.getElementById("nave").style.backgroundImage="url(explosion.gif)";
                 document.getElementById("play").style.visibility="visible";
+                var audio= new Audio("explosion.mp3");
+                audio.play();
 
             }
             else{

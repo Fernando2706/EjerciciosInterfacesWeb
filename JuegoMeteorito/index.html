@@ -8,7 +8,7 @@
     <script>
         var playing=true;
         var velocidadNave=20;
-        var numeroDisparo=0;
+        var numeroDisparo=1;
 
         window.addEventListener("keydown",(k)=>{
             if(playing){
@@ -75,15 +75,13 @@
             var Meteoritos=[...document.getElementsByClassName("meteorito")];
             Meteoritos.forEach((element)=>{
                 var randomX=Math.floor(Math.random() * 90);
-                console.log(element.id);
                 document.getElementById(element.id).style.left=randomX+"%";
                 document.getElementById(element.id).style.top="-10px"
             });
             var Naves=[...document.getElementsByClassName("nave-enemiga")]
             Naves.forEach(element => {
-                var randomX=Math.floor(Math.random() * 90);
-                console.log(element.id);
-                document.getElementById(element.id).style.left=randomX+"%";
+                var randomX=Math.floor(Math.random() * (window.screen.width-200));
+                document.getElementById(element.id).style.left=randomX+"px";
                 document.getElementById(element.id).style.top="-10px"
             });
             document.getElementById("nave").style.top="800px"
@@ -154,18 +152,62 @@
             Naves.forEach(element => {
                 var positionY=document.getElementById(element.id).style.top;
                 var pos=parseInt(positionY.replace("px",""));
+                var positionX=document.getElementById(element.id).style.left;
+                var posX=parseInt(positionX.replace("px",""));
                 if(pos>window.screen.height-200){
-                    var randomX=Math.floor(Math.random() * 80);
-                    document.getElementById(element.id).style.left=randomX+"%";
+                    var randomX=Math.floor(Math.random() * (window.screen.width-200));
+                    posX=randomX;
+                    document.getElementById(element.id).style.left=randomX+"px";
                     pos=0;
                 }
-                if(aux==speed.length)
+                if(aux==speed.length){
                     aux=0;
+                }
+
+                if(posX>window.screen.width-100){
+                    console.log("F");
+                    var randomX=Math.floor(Math.random() * (window.screen.width-200));
+                    posX=randomX;
+                    document.getElementById(element.id).style.left=randomX+"px";
+                    pos=0;
+
+                }
+                if(posX<0){
+                    console.log("F");
+                    var randomX=Math.floor(Math.random() * (window.screen.width-200));
+                    posX=randomX;
+                    document.getElementById(element.id).style.left=randomX+"px";
+                    pos=0;
+                }
+
+                    
+                //debugger;
+                var direc=Math.floor(Math.random() * 100);
+                var direc2=Math.floor(Math.random() * 200);
+
+                /*if(direc%2==0){
+                    if(direc%2==0){
+                        document.getElementById(element.id).style.left=posX+2+"px";
+                    }else{
+                    }
+                }else{
+                }*/
+                
+                var id=parseInt(element.id.replace("nave-",""));
+                if(id%2==0){
+                    
+                    document.getElementById(element.id).style.left=posX+5+"px";
+                }else{
+                    document.getElementById(element.id).style.left=posX-5+"px";
+                }
+                
                 document.getElementById(element.id).style.top=pos+speed[aux]+"px";
                 aux++;
                 if(numeroDisparo%30==0){
                     disparoEnemigo(element);
                 }
+                isCollapsed(document.getElementById("nave"),element);
+
             });
             if(numeroDisparo%100==0){
                 crearNave();

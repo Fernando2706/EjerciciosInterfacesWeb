@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rick & Morty Api</title>
+
+
+    <script>
+        var urlActual="https://rickandmortyapi.com/api/character"
+        var chartacters =[];
+        window.onload=fetchApi("https://rickandmortyapi.com/api/character");
+        async function fetchApi(url) {
+           await fetch(url)
+                .then(response=>response.json())
+                .then((data)=>{
+
+                    chartacters=data.results;
+                    console.log(chartacters[1]);
+
+                    chartacters.forEach(element => {
+                        var caja=document.createElement("div");
+                        var foto=document.createElement("div");
+                        foto.className="foto";
+                        foto.style.backgroundImage="url("+element.image+")";
+                        var nombre=document.createElement("div");
+                        nombre.className="texto";
+                        var status=document.createElement("div");
+                        status.className="texto_peque";
+                        var gender=document.createElement("div");
+                        gender.className="texto_peque";
+                        var species=document.createElement("div");
+                        species.className="texto_peque";
+                        var location=document.createElement("div");
+                        location.className="texto_peque";
+                        caja.appendChild(foto);
+                        caja.appendChild(nombre);
+                        caja.appendChild(status);
+                        caja.appendChild(gender);
+                        caja.appendChild(species);
+                        caja.appendChild(location);
+                        caja.className="caja"
+                        document.getElementById("elementos").appendChild(caja);
+                        nombre.innerHTML=element.name;
+                        status.innerHTML="Status: "+element.status;
+                        gender.innerHTML="Gender: "+element.gender;
+                        species.innerHTML="Species: "+element.species;
+                        location.innerHTML="Location: "+element.location.name;
+                    });
+                });
+        }
+        async function nextPage(params) {
+            var cajas=[...document.getElementsByClassName("caja")];
+
+            
+            await fetch(urlActual)
+                .then(response=>response.json())
+                .then((data)=>{
+                    if(data.info.next!=null){
+                    cajas.forEach(element => {
+                        document.getElementById("elementos").removeChild(element);
+                    });
+                    
+                    changeURL(data.info.next);
+                    fetchApi(data.info.next);
+                    }
+                });
+        }
+        async function prevPage(params) {
+            var cajas=[...document.getElementsByClassName("caja")];
+
+            
+            await fetch(urlActual)
+                .then(response=>response.json())
+                .then((data)=>{
+                    if(data.info.prev!==null){
+                    cajas.forEach(element => {
+                        document.getElementById("elementos").removeChild(element);
+                    });
+                                
+                    changeURL(data.info.prev);
+                    fetchApi(data.info.prev);
+                    }
+                });
+        }
+        function changeURL(params) {
+            urlActual=params;
+        }
+        
+
+    </script>
+</head>
+<body>
+
+
+
+    <div class="elementos" id="elementos">
+        
+    </div>
+
+    <div class="botones" id="botones">
+        <div class="prev" id="prev" onclick="prevPage()"> PREV</div>
+        <div class="next" id="next" onclick="nextPage()"> NEXT</div>
+        
+    </div>
+</body>
+</html>

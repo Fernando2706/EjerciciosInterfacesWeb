@@ -1,0 +1,24 @@
+.teclado{
+    flex-wrap: wrap;
+    
+}
+.fila{
+    display: flex;
+}
+.teclas{
+    width: 40px;
+    margin: 4px;
+    font-size: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.teclas_doble{
+    width: 90px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    font-size: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+    size: 100%;
+}

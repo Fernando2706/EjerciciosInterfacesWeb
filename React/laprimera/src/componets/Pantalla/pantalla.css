@@ -1,0 +1,7 @@
+.Pantalla{
+    width: 100%;
+    height: 20px;
+    background-color: yellow;
+    display: flex;
+    justify-content: end;
+}

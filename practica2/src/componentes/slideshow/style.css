@@ -15,6 +15,7 @@
     margin: 0 auto;
     overflow: hidden;
     max-width: 500px;
+    max-height: max-content;
     height: 60%;
 
 }

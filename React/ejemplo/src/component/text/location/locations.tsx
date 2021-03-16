@@ -1,18 +1,15 @@
 import React, {FC, useState, useEffect} from 'react';
 import axios from 'axios';
 
-interface ICharacters{
-
-}
 
 
-const Characters:FC=()=>{
+const Locations:FC=()=>{
 
     const [data,setData]=useState<any>();
-    const [characters,setCharacters]=useState<any>();
+    const [locations,setLocations]=useState<any>();
     useEffect(()=>{
-        axios.get("https://rickandmortyapi.com/api/character").then((response)=>{
-            setCharacters(response.data.results);
+        axios.get("https://rickandmortyapi.com/api/location").then((response)=>{
+            setLocations(response.data.results);
             
             
             setData(response.data);
@@ -23,11 +20,11 @@ const Characters:FC=()=>{
     return(
         <div>
             {!data&&"Fetching data"}
-            {data&&characters.map((value:any, index:number)=>{
+            {data&&locations.map((value:any, index:number)=>{
                 return <div>{value.name}</div>
             })}
         </div>
     );
 }
 
-export default Characters;
+export default Locations;

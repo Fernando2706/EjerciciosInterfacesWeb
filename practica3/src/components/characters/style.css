@@ -1,0 +1,8 @@
+.back{
+    padding-top: 30px;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

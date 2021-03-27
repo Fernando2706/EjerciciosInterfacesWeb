@@ -89,7 +89,13 @@ const CharactersFC:FC =()=>{
                             {state==="all"&&people.map((value,index)=>{
                                 //console.log(value.name);
                                 
-                                return <div className="title">{value.name}</div>
+                                return (
+                                    <div className="back_film">
+                                        <div className="title">Name: {value.name}</div>
+                                        <div className="white">Birth: {value.birth_year}</div>
+                                        <div className="white">Gender: {value.gender}</div>
+                                    </div>
+                                )
                             })}
                             {state==="search"&&(
                                 <div className="back_films">
@@ -103,7 +109,13 @@ const CharactersFC:FC =()=>{
                                         
                                     }}/>
                                     {item&&item.map((value,index)=>{
-                                        return <div className="title">{value.name}</div>
+                                        return (
+                                            <div className="back_film">
+                                                <div className="title">Name: {value.name}</div>
+                                                <div className="white">Birth: {value.birth_year}</div>
+                                                <div className="white">Gender: {value.gender}</div>
+                                            </div>
+                                        )
                                     })}
                                 </div>
                             )}

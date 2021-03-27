@@ -64,7 +64,12 @@ const Films:FC = ()=>{
                         <div className="back_films">
                             {state==="null"&&"Waiting..."}
                             {state==="all"&&data.map((value,index)=>{
-                                return <div className="title">{value.title}</div>
+                                return (
+                                    <div className="back_films">
+                                        <div className="title">{value.title}</div>
+                                        <div className="white">{value.opening_crawl}</div>
+                                    </div>
+                                )
                             })}
                             {state==="search"&&(
                                 <div className="back_films">
@@ -78,7 +83,12 @@ const Films:FC = ()=>{
                                         
                                     }}/>
                                     {item&&item.map((value,index)=>{
-                                        return <div className="title">{value.title}</div>
+                                        return (
+                                            <div className="back_films">
+                                                <div className="title">{value.title}</div>
+                                                <div className="white">{value.opening_crawl}</div>
+                                            </div>
+                                        )
                                     })}
                                 </div>
                             )}

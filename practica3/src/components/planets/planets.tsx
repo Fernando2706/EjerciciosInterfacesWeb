@@ -1,6 +1,6 @@
 import React, {FC,useEffect, useState } from 'react';
 import axios from 'axios';
-import "../characters/style.css"
+import "../planets/style.css"
 
 export interface Planets {
     count:    number;
@@ -81,7 +81,15 @@ const PlanetsFC:FC =()=>{
                             {state==="all"&&people.map((value,index)=>{
                                 //console.log(value.name);
                                 
-                                return <div className="title">{value.name}</div>
+                                return (
+                                    <div className="back_films">
+                                        <div className="title">{value.name}</div>
+                                        <div className="white">Climate: {value.climate}</div>
+                                        <div className="white">Gravity: {value.gravity}</div>
+                                        <div className="white">Population: {value.population}</div>+
+                                        
+                                    </div>
+                                )
                             })}
                             {state==="search"&&(
                                 <div className="back_films">

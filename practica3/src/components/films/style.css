@@ -31,3 +31,8 @@
 .input_text{
     width: 400px;
 }
+.white{
+    align-self: center;
+    width: 500px;
+    color: white;
+}

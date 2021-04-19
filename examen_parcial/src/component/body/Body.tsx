@@ -97,6 +97,7 @@ const Body:FC<{text:string}>=({text})=>{
     console.log(data);
     return(
         <div className="container_search">
+            {state!=="done"&&<div>Buscando...</div>}
             {state==="done"&&<div>Busqueda completada</div>}
             {data&&<div className="botones">
                     <div onClick={(e)=>updateIndexLess()} className="button">Prev ({minIndex})</div>

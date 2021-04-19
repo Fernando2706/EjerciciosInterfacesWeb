@@ -12,7 +12,10 @@ const Main:FC = ()=>{
         <div className="back">
             <div className="title">Buscador de Libros</div>
             <div className="container">
-                <input type="text" onChange={(e)=>setSearch(e.target.value)}/>
+                <input type="text" onChange={(e)=>{
+                    setSearch(e.target.value)
+                    setState("");
+                    }}/>
                 <div className="boton" onClick={(e)=>setState("searching")}>Buscar</div>
             </div>
             {!state&&(<div className="text_aux">Dale a buscar para continuar</div>)}

@@ -1,0 +1,47 @@
+.containerFilter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../images/fondo.png");
+    padding: 20px;
+    min-height: 300px;
+}
+
+.buscador{
+    padding: 2px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 200px;
+    height: 30px;
+    background-color: #00DBDE;
+    background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+    color: white;
+    transition: 1s;
+}
+.buscador:hover{
+    background-position: right center; 
+}
+::placeholder{
+    color: white;
+}
+.boton{
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: aliceblue;
+    color: black;
+    text-align: center;
+    transition: 1s;
+    border: 1px solid black;
+}
+.boton:hover{
+    background-color: black;
+    color: aliceblue;
+    border: 1px solid white;
+}
+.boton:active{
+    font-size: 75%;
+}

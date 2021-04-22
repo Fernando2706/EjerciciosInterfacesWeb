@@ -1,0 +1,136 @@
+.bodyContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9AFD9;
+    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.loader{
+    margin: 10px;
+}
+
+.typeShow{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.btn-grad:active{
+    font-size: 75%;
+}
+
+.btn-grad {background-image: linear-gradient(to right, #603813 0%, #b29f94  51%, #603813  100%)}
+.btn-grad {
+    width: 100px;
+    height: 25px;
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px rgb(187, 186, 186);
+   border-radius: 10px;
+   display: block;
+   cursor: pointer;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; 
+   text-decoration: none;
+ }
+
+
+
+.sortOption{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.sort{
+    cursor: pointer;
+    margin: 5px;
+    border: 1px solid blue;
+    padding: 2px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+}
+
+.List{
+    background-color: white;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.botones{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn-grad2 {background-image: linear-gradient(to right, #2b5876 0%, #4e4376  51%, #2b5876  100%)}
+.btn-grad2 {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+   cursor: pointer;
+}
+
+.btn-grad2:hover {
+   background-position: right center; 
+   color: #fff;
+   text-decoration: none;
+}
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    background-color:beige;
+    justify-content: center;
+    margin: 10px;
+    height: 100%;
+}
+.box{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    height: fit-content;
+    width: 250px;
+    height: 400px;
+}
+.texto_title{
+    color: black;
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 5px;
+}
+
+.container{
+    width: 1500px;
+}
+.texto_amz{
+    text-decoration: none;
+    background-color: black;
+    width: 50%;
+    color: white;
+    border-radius: 2px;
+    border: 2px solid black;
+    cursor: pointer;
+}

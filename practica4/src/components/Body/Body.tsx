@@ -62,7 +62,9 @@ const Body:FC<bodyProps> =(props)=>{
 
     useEffect(()=>{
         axios.get(url).then((response)=>{
-
+            if(response.status===500){
+                alert("El servidor no responde...")
+            }
             update(response.data);
             
         })
@@ -126,7 +128,10 @@ const Body:FC<bodyProps> =(props)=>{
 
     return(
         <div className="bodyContainer">
-            {!finish&&<div className="loader"><PacmanLoader color="#0a3dc9"></PacmanLoader></div>}
+            {!finish&&<div className="loader">
+                <PacmanLoader color="#ffffff"></PacmanLoader>
+                <div className="boxInfo">Cargando... {data?.start} {data?.num_found}</div>
+            </div>}
             {finish&&<div>
                 <div className="typeShow">
                     <div className="btn-grad" onClick={(e)=>{

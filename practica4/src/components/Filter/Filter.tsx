@@ -27,7 +27,6 @@ const Filter:FC<FilterProps> =(props)=>{
                 }}/>
             </div>
             <div className="boton" onClick={(e)=>{
-                props.changeFilter("")
                 if(searchAuthor!==""){
                     props.changeFilter(searchAuthor.replaceAll(" ","+"))
                     props.isTitle(false)

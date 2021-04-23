@@ -10,21 +10,21 @@ function App() {
 
   const[type, setType]=useState<boolean>(false);
   const[filter, setFilter]=useState<string>("");
+  const[state,setState]=useState<string>("waiting")
 
   const changeFilter= (filter:string)=>{
+    if(state==="done")setState("waiting")
     setFilter(filter);
+    if(state==="waiting")setState("done");
   }
 
   const isTitle = (type:boolean)=>{
     setType(type)
   }
-
   return (
     <div>
       <Filter isTitle={isTitle} changeFilter={changeFilter}></Filter>
-      {filter&&<Body type={type} filter={filter}/>}
-
-      
+      {state!=="waiting"&&<Body type={type} filter={filter}/>}
     </div>
   );
 }

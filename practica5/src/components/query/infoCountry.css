@@ -68,3 +68,6 @@
     align-items: center;
     justify-content: center;
 }
+.capital{
+    cursor: pointer;
+}

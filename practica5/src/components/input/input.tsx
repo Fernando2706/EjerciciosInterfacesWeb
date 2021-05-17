@@ -1,3 +1,4 @@
+import { fchmod } from 'fs';
 import React from 'react';
 import {FC, useState} from 'react';
 import './input.css'
@@ -17,7 +18,7 @@ const InputText: FC<InputTextProps> = (props) => {
       <div className="box">
         <div className="container_search">
             <input placeholder="Enter a name to continue" className="input_text" type="text" onChange={(e) => {
-                setName(e.target.value)        
+                setName(e.target.value)       
             }} />
           <div className="button" onClick={() => {
             props.changeFilter(searchName,type)

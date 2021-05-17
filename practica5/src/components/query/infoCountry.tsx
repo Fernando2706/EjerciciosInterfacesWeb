@@ -21,6 +21,7 @@ const Country = gql`
         name
       }
       name
+      alpha2Code
     }
   }
     
@@ -47,7 +48,8 @@ interface ICountry{
     languages: Array<{
       name:string
     }>,
-    name:string
+    name:string,
+    alpha2Code:string
   }>
 }
 
@@ -96,6 +98,22 @@ const InfoCountry: FC<CountryProps> = (props) => {
           )
         }
       })}
+      {index!=-1&&
+        <div className="ventana">
+            <div className="cerrar" onClick={()=>setIndex(-1)}>X</div>
+            <div className="bandera">
+              <img src={"https://www.countryflags.io/"+data?.countries[index].alpha2Code+"/flat/64.png"}></img>
+
+            </div>
+            <div className="datos">
+              <div className="data">Name: {data?.countries[index].name}</div>
+              <div className="data">Code: {data?.countries[index].alpha2Code}</div>
+              <div className="data">Population: {data?.countries[index].population}</div>
+              <div className="data">Capital: {data?.countries[index].capital.name}</div>
+              <div className="data">Language: {data?.countries[index].languages[0].name}</div>
+            </div>
+        </div>
+      }
     </div>
   )
 

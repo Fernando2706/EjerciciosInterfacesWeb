@@ -38,6 +38,7 @@ interface ICity{
 const InfoCity: FC<CityProps>= (props) => {
   const {data,loading,error} = useQuery<ICity>(City,{variables:{name:props.name}})
   const [index, setIndex] = useState<number>(-1);
+  console.log(data);
   
   return (
     <div className="container_global">

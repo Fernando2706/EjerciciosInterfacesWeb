@@ -165,7 +165,7 @@ const InfoCity: FC<CityProps> = (props) => {
             <div className="data">Population: {data?.cities[index].population} </div>
             {data?.cities[index].timeZone && <div className="data">Time zone: {data.cities[index].timeZone.name}</div>}
             {dataWeather &&
-              <div>
+            <div>
                 <br />
                 <div className="data">Weather description: {dataWeather.weather[0].description}</div>
                 <div className="data">Time: {(dataWeather.main.temp - 273.15)}ºC</div>

@@ -24,7 +24,7 @@ function App() {
     setName(name);
     setType(isCountry)
   }
-  console.log(searchName + " " + type);
+  console.log("autor: FERNANDO MURUA ALCAZAR");
   
   return (
     <ApolloProvider client={client}>
